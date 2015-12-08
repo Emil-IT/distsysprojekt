@@ -1,13 +1,13 @@
-package iTBook;
+package tvattstuga;
 
-public class Users {
-	
+public class User {
+
 	private String name;
 	private String password;
 	private int ID;
 	static int numberOfUsers = 1;
 	
-	public Users(String name, String pass){
+	public User(String name, String pass){
 		this.name = name;
 		this.password = pass;
 		//numberOfUsers = numberOfUsers+1;
