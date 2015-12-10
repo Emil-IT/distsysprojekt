@@ -8,7 +8,7 @@ public class Tvattstuga implements TvattstugaInterface {
 	
     private int[][] schedule = new int[30][14];;
     private int today;
-    private ArrayList<User> userList;
+    public ArrayList<User> userList = new ArrayList<User>();
     
   
 
@@ -48,21 +48,25 @@ public class Tvattstuga implements TvattstugaInterface {
 	  return true;
   }
   
-  private int ValidateUser(String name, String pass){
+  public int ValidateUser(String name, String pass){
 	  User user = GetUser(name);
 	  if(user != null && user.ValidatePass(pass)) return user.GetID();
 	  return 0;
   }
   
-  private User GetUser(String name){
+  public User GetUser(String name){
 		for(int i = 0; i < userList.size(); i++){
-			if(userList.get(i).GetName() == name) return userList.get(i);
+			if(userList.get(i).GetName().equals(name)) return userList.get(i);
 		}
 		return null;
 	}
   
-  private Boolean VacantTime(int time, int day){
-	  if(this.schedule[(this.today + day) % 30][time] != 0) return true;
+  public User GetUserNr(int i){
+	  return userList.get(i);
+  }
+  
+  public Boolean VacantTime(int time, int day){
+	  if(this.schedule[(this.today + day) % 30][time] == 0) return true;
 	  return false;
   }
   
@@ -72,7 +76,9 @@ public class Tvattstuga implements TvattstugaInterface {
 	 
   }
 
-
+  public int GetSize(){
+	  return userList.size();
+  }
 
 
     public String sayHello() {
