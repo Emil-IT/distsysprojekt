@@ -19,6 +19,15 @@ public class User implements Serializable {
 		this.ID = numberOfUsers++;
 	}
 	
+	public User(String name, String pass, int ID){
+		this.name = name;
+		this.password = pass;
+		//numberOfUsers = numberOfUsers+1;
+		this.ID = ID;
+		
+		if(ID >= numberOfUsers) numberOfUsers = ID+1;
+	}
+	
 	public String GetName(){
 		return this.name;
 	}
@@ -32,4 +41,7 @@ public class User implements Serializable {
 		return this.ID;
 	}
 
+	public String toString(){
+		return(this.name + "," + this.password + "," + this.ID + "\n");
+	}
 }
